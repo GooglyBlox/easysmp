@@ -31,7 +31,6 @@ export default function Home() {
             fill
             objectFit="cover"
             quality={100}
-            sizes="100vw"
             priority={index === 0}
             className={`transition-opacity duration-1000 ${
               index === currentImage ? "opacity-100" : "opacity-0"
