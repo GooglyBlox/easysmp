@@ -24,20 +24,16 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center relative">
       <div className="fixed-size-container">
         {images.map((image, index) => (
-          <Image
+          <div
             key={index}
-            src={image}
-            alt={`Background ${index + 1}`}
-            fill
-            objectFit="cover"
-            quality={100}
-            priority={index === 0}
-            className={`transition-opacity duration-1000 ${
-              index === currentImage ? "opacity-100" : "opacity-0"
+            className={`bg-image bg-cover bg-center transition-opacity duration-1000 ${
+              index === currentImage ? 'opacity-100' : 'opacity-0'
             }`}
-          />
+            style={{ backgroundImage: `url(${image})` }}
+          >
+            <div className="absolute inset-0 bg-black opacity-40"></div>
+          </div>
         ))}
-        <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
       <div className="absolute inset-0 flex items-center justify-center z-10">
         <div className="text-center">

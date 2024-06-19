@@ -9,10 +9,6 @@ export const metadata: Metadata = {
   description: "Join our Minecraft server, EasySMP!",
 };
 
-const preloadImages = [
-  "/image1.png",
-];
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,11 +16,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {preloadImages.map((image, index) => (
-          <link key={index} rel="preload" href={image} as="image" />
-        ))}
-      </head>
       <body className={montserrat.className}>{children}</body>
     </html>
   );
