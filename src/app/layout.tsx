@@ -11,8 +11,6 @@ export const metadata: Metadata = {
 
 const preloadImages = [
   "/image1.png",
-  "/image2.png",
-  "/image3.png",
 ];
 
 export default function RootLayout({
