@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Toast from "../components/Toast";
+// import Toast from "../components/Toast";
 
 const images = [
   "/image1.png",
@@ -64,7 +64,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <Toast />
+      {/* <Toast /> */}
     </main>
   );
 }
