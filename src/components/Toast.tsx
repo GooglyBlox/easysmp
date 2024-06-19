@@ -15,10 +15,9 @@ const Toast = () => {
   }, []);
 
   return (
-    <div className={`toast ${visible ? 'fade-in' : ''}`}>
-      Looking for our world map? 
-      <Link href="https://map.ezsmp.live" target="_blank" rel="noopener noreferrer" className="toast-link">
-        Click here!
+    <div className={`minecraft-toast ${visible ? 'fade-in' : ''}`}>
+      <Link href="https://map.ezsmp.live" target="_blank" rel="noopener noreferrer" className="minecraft-toast-link">
+        Looking for our world map? Click here!
       </Link>
     </div>
   );
