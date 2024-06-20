@@ -40,7 +40,7 @@ const Join = () => {
                 "Click on &ldquo;Multiplayer&rdquo;",
                 "Click &ldquo;Add Server&rdquo;",
                 "Enter &ldquo;EasySMP&rdquo; as the server name",
-                "Enter &ldquo;play.ezsmp.net&rdquo; as the server address",
+                "Enter &ldquo;play.ezsmp.live&rdquo; as the server address",
                 "Click &ldquo;Done&rdquo; and join the server!",
               ].map((step, index) => (
                 <motion.li 
@@ -62,7 +62,7 @@ const Join = () => {
                 "Go to the &ldquo;Servers&rdquo; tab",
                 "Scroll down and click &ldquo;Add Server&rdquo;",
                 "Enter &ldquo;EasySMP&rdquo; as the server name",
-                "Enter &ldquo;play.ezsmp.net&rdquo; as the server address",
+                "Enter &ldquo;play.ezsmp.live&rdquo; as the server address",
                 "Leave the port as default (19132)",
                 "Click &ldquo;Save&rdquo; and join the server!",
               ].map((step, index) => (
