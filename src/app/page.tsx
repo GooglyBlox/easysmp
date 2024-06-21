@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaDiscord } from 'react-icons/fa';
 import BackgroundCarousel from "../components/BackgroundCarousel";
 import About from "../components/About";
 import Features from "../components/Features";
 import Join from "../components/Join";
 import FAQ from "../components/FAQ";
-import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -46,8 +46,15 @@ export default function Home() {
               <Link href="#join" className="button button-primary hover:scale-105 transition-transform">
                 Join Now
               </Link>
-              <Link href="https://discord.gg/easysmp" target="_blank" rel="noopener noreferrer" className="button button-secondary hover:scale-105 transition-transform">
-                Join our Discord
+              <Link 
+                href="https://discord.gg/easysmp" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="button bg-[#5865f2] text-white hover:bg-[#4752c4] hover:scale-105 transition-all relative w-[50px] h-[50px] rounded-full"
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <FaDiscord className="w-8 h-8" />
+                </div>
               </Link>
             </motion.div>
           </motion.div>
@@ -56,7 +63,6 @@ export default function Home() {
         <Features />
         <Join />
         <FAQ />
-        <Footer />
       </div>
     </main>
   );

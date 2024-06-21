@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 const images = [
-  "/image1.png",
-  "/image2.png",
-  "/image3.png",
+  "/backgrounds/image1.png",
+  "/backgrounds/image2.png",
+  "/backgrounds/image3.png",
 ];
 
 const BackgroundCarousel = () => {

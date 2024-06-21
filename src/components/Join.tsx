@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { FaDiscord } from 'react-icons/fa';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Join = () => {
@@ -88,9 +89,11 @@ const Join = () => {
             href="https://discord.gg/easysmp" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="button button-primary hover:scale-105 transition-transform"
+            className="button bg-[#5865f2] text-white hover:bg-[#4752c4] hover:scale-105 transition-all relative w-[50px] h-[50px] rounded-full"
           >
-            Join our Discord
+            <div className="absolute inset-0 flex items-center justify-center">
+              <FaDiscord className="w-8 h-8" />
+            </div>
           </Link>
           <Link 
             href="https://www.paypal.com/ncp/payment/QJRSMY82RCXVG" 
