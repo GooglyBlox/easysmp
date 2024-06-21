@@ -12,6 +12,23 @@ const faqs = [
     answer: "To join, simply use the server IP provided in our info section. The server is public, so feel free to invite your friends!"
   },
   {
+    question: "How do I vote for the server?",
+    answer: (
+      <div>
+        <p>You can vote for our server on the following platforms:</p>
+        <ul className="list-disc pl-5 mt-2 space-y-2">
+          <li><a href="https://www.curseforge.com/servers/minecraft/game/easy-smp/vote" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">CurseForge</a></li>
+          <li><a href="https://minelist.net/vote/4422" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Minelist</a></li>
+          <li><a href="https://topminecraftservers.org/server/37895" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Top Minecraft Servers</a></li>
+          <li><a href="https://topg.org/minecraft-servers/server-664463" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">TopG</a></li>
+          <li><a href="https://minecraft-mp.com/server/332862/vote/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Minecraft-MP</a></li>
+          <li><a href="https://minecraftservers.org/vote/663064" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">MinecraftServers.org</a></li>
+        </ul>
+        <p className="mt-4">Voting helps us reach more players and supports the server's growth. We appreciate your support!</p>
+      </div>
+    )
+  },
+  {
     question: "Where is the server located?",
     answer: "Our server is hosted by ApexHosting and is located in Montreal, Quebec."
   },
@@ -37,7 +54,7 @@ const faqs = [
   }
 ];
 
-const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+const FAQItem = ({ question, answer }: { question: string, answer: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
