@@ -16,7 +16,7 @@ const faqs = [
     question: "How do I vote for the server?",
     answer: (
       <div>
-        <p>You can vote for our server on various platforms. We've created a dedicated voting page to make it easier for you.</p>
+        <p>You can vote for our server on various platforms. We&apos;ve created a dedicated voting page to make it easier for you.</p>
         <Link href="/vote" className="text-blue-400 hover:underline mt-2 inline-block">
           Go to Voting Page
         </Link>
@@ -49,7 +49,7 @@ const faqs = [
   }
 ];
 
-const FAQItem = ({ question, answer }: { question: string, answer: React.ReactNode }) => {
+const FAQItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -83,7 +83,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: React.ReactNo
   );
 };
 
-const FAQ = () => {
+const FAQ: React.FC = () => {
   return (
     <section id="faq" className="section bg-gray-900 bg-opacity-80 py-20">
       <div className="section-content">
