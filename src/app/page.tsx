@@ -7,6 +7,7 @@ import About from "../components/About";
 import Features from "../components/Features";
 import Join from "../components/Join";
 import FAQ from "../components/FAQ";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -55,6 +56,7 @@ export default function Home() {
         <Features />
         <Join />
         <FAQ />
+        <Footer />
       </div>
     </main>
   );

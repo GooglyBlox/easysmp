@@ -35,7 +35,7 @@ const Header = () => {
 
   return (
     <header className="header backdrop-blur-md bg-gray-800 bg-opacity-70">
-      <nav className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="flex justify-between items-center mx-auto px-4 sm:px-6 lg:px-8">
         <Link href="/" className="text-2xl font-bold">EasySMP</Link>
         
         <button
