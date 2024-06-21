@@ -24,7 +24,7 @@ const faqs = [
           <li><a href="https://minecraft-mp.com/server/332862/vote/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Minecraft-MP</a></li>
           <li><a href="https://minecraftservers.org/vote/663064" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">MinecraftServers.org</a></li>
         </ul>
-        <p className="mt-4">Voting helps us reach more players and supports the server's growth. We appreciate your support!</p>
+        <p className="mt-4">Voting helps us reach more players and supports the server&apos;s growth. We appreciate your support!</p>
       </div>
     )
   },
