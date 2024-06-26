@@ -1,34 +1,38 @@
-import { useState, useEffect } from "react";
+'use client';
 
-const images = [
-  "/backgrounds/image1.png",
-  "/backgrounds/image2.png",
-  "/backgrounds/image3.png",
+import { useState, useEffect } from 'react';
+
+const backgrounds = [
+  '/images/backgrounds/image1.png',
+  '/images/backgrounds/image2.png',
+  '/images/backgrounds/image3.png',
+  '/images/backgrounds/image4.png',
 ];
 
 const BackgroundCarousel = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currentBackground, setCurrentBackground] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    const interval = setInterval(() => {
+      setCurrentBackground((prev) => (prev + 1) % backgrounds.length);
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="fixed-size-container">
-      {images.map((image, index) => (
+    <div className="fixed inset-0 z-[-1]">
+      {backgrounds.map((bg, index) => (
         <div
-          key={index}
-          className={`bg-image bg-cover bg-center transition-opacity duration-1000 ${
-            index === currentImage ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ backgroundImage: `url(${image})` }}
-        >
-          <div className="absolute inset-0 bg-black opacity-40"></div>
-        </div>
+          key={bg}
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+          style={{
+            backgroundImage: `url(${bg})`,
+            opacity: index === currentBackground ? 1 : 0,
+          }}
+        />
       ))}
+      <div className="absolute inset-0 bg-black opacity-50" />
     </div>
   );
 };

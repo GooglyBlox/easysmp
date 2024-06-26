@@ -1,0 +1,61 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/fonts/Minecraft.ttf') format('truetype');
+}
+
+body {
+  @apply bg-gray-900 text-white;
+  font-family: 'Minecraft', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.nav-link {
+  @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium;
+}
+
+.mobile-nav-link {
+  @apply text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium;
+}
+
+@layer utilities {
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+
+.minecraft-container {
+  border-style: solid;
+  border-width: 3px;
+  border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAA7klEQVR4Xu3csQ3CMBBA0Y8oVaNgApiaHdgAKtZgGYagYALEBHSRaOhQLkYUOb4XS5YsWb4qO+fRlFLuZVnepw2jKfVHbA4tPM456Yxzf7EIOOfkA539xALM1BQQI0HAGAQMQsAgBAxCwCAEDELAIAQMQsAgBAxCwCAEDELAIAQMQsAgBAxCwCAEDELAIAQMQsAgBAxCwCAEDELAIAQMQsAgBAxCwCAEDELAIAQMQsAgBAxCwCAEDJIKuO/7ummatYWcba/KGA1pwHf7NHyfKiCwHsPtKQRUnzCA+gZVQGADhmUMCxw/MoEVkBtUxmcXS7oAAAAASUVORK5CYII=") 3;
+  image-rendering: pixelated;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text-yellow-400 {
+  color: #f59e0b;
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-green-400 {
+  --tw-gradient-from: #34d399;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(52, 211, 153, 0));
+}
+
+.to-blue-500 {
+  --tw-gradient-to: #3b82f6;
+}

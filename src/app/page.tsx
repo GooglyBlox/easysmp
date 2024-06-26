@@ -1,69 +1,42 @@
 'use client';
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { FaDiscord } from 'react-icons/fa';
-import BackgroundCarousel from "../components/BackgroundCarousel";
-import About from "../components/About";
-import Features from "../components/Features";
-import Join from "../components/Join";
-import FAQ from "../components/FAQ";
+import { useEffect } from 'react';
+import Link from 'next/link';
+import MinecraftButton from '../components/MinecraftButton';
+import ServerStatus from '../components/ServerStatus';
 
 export default function Home() {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+    };
+  }, []);
+
   return (
-    <main className="min-h-screen relative">
-      <BackgroundCarousel />
-      <div className="absolute inset-0 z-10">
-        <section id="home" className="section h-screen flex items-center justify-center">
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1 
-              className="mb-4 text-6xl font-bold text-white text-shadow"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              EasySMP
-            </motion.h1>
-            <motion.p 
-              className="mb-8 text-2xl text-white text-shadow"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              Welcome to our Minecraft Server!
-            </motion.p>
-            <motion.div 
-              className="flex justify-center space-x-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
-              <Link href="#join" className="button button-primary hover:scale-105 transition-transform">
-                Join Now
-              </Link>
-              <Link 
-                href="https://discord.gg/easysmp" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="button bg-[#5865f2] text-white hover:bg-[#4752c4] hover:scale-105 transition-all relative w-[50px] h-[50px] rounded-full"
-              >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FaDiscord className="w-8 h-8" />
-                </div>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </section>
-        <About />
-        <Features />
-        <Join />
-        <FAQ />
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-8 text-center shadow-text">
+        Welcome to EasySMP
+      </h1>
+      <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-12 text-center max-w-2xl text-gray-300 shadow-text">
+        Experience Minecraft like never before on our friendly and exciting server!
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 mb-6 sm:mb-12">
+        <Link href="/join">
+          <MinecraftButton className="text-lg sm:text-xl px-6 sm:px-8 py-2 sm:py-3">
+            Join Now
+          </MinecraftButton>
+        </Link>
+        <Link href="/about">
+          <MinecraftButton className="text-lg sm:text-xl px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 border-blue-700 hover:bg-blue-500 hover:border-blue-600">
+            Learn More
+          </MinecraftButton>
+        </Link>
       </div>
-    </main>
+      <ServerStatus />
+    </div>
   );
 }
