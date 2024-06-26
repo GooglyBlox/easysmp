@@ -37,10 +37,10 @@ export default function Join() {
         <ol className="list-decimal list-inside text-lg mb-6 space-y-4">
           <li>Open Minecraft (Java or Bedrock Edition)</li>
           <li>Go to Multiplayer or Servers</li>
-          <li>Click "Add Server" or "New Server"</li>
-          <li>Enter "EasySMP" as the server name</li>
-          <li>Use "play.ezsmp.live" as the server address</li>
-          <li>Click "Done" and join the server!</li>
+          <li>Click &quot;Add Server&quot; or &quot;New Server&quot;</li>
+          <li>Enter &quot;EasySMP&quot; as the server name</li>
+          <li>Use &quot;play.ezsmp.live&quot; as the server address</li>
+          <li>Click &quot;Done&quot; and join the server!</li>
         </ol>
         <div 
           className="bg-gray-700 p-4 rounded-lg mb-6 cursor-pointer"
