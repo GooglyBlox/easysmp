@@ -20,18 +20,15 @@ h1, h2, h3, h4, h5, h6 {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-.nav-link {
-  @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium;
-}
-
-.mobile-nav-link {
-  @apply text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium;
-}
-
 @layer utilities {
   .no-scroll {
     overflow: hidden;
     height: 100vh;
+  }
+
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 }
 
@@ -43,19 +40,27 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.text-yellow-400 {
-  color: #f59e0b;
+/* Mobile-first responsive adjustments */
+h1 {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6;
 }
 
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+h2 {
+  @apply text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4;
 }
 
-.from-green-400 {
-  --tw-gradient-from: #34d399;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(52, 211, 153, 0));
+p {
+  @apply text-base sm:text-lg md:text-xl mb-4 sm:mb-6;
 }
 
-.to-blue-500 {
-  --tw-gradient-to: #3b82f6;
+.panel {
+  @apply px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10;
+}
+
+.minecraft-button {
+  @apply text-sm sm:text-base md:text-lg px-3 py-1 sm:px-4 sm:py-2 md:px-6 md:py-3;
+}
+
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

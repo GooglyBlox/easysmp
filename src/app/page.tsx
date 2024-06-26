@@ -24,14 +24,14 @@ export default function Home() {
       <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-12 text-center max-w-2xl text-gray-300 shadow-text">
         Experience Minecraft like never before on our friendly and exciting server!
       </p>
-      <div className="flex flex-col sm:flex-row gap-4 mb-6 sm:mb-12">
-        <Link href="/join">
-          <MinecraftButton className="text-lg sm:text-xl px-6 sm:px-8 py-2 sm:py-3">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6 sm:mb-12 w-full">
+        <Link href="/join" className="w-full sm:w-auto">
+          <MinecraftButton className="text-lg sm:text-xl px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto">
             Join Now
           </MinecraftButton>
         </Link>
-        <Link href="/about">
-          <MinecraftButton className="text-lg sm:text-xl px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 border-blue-700 hover:bg-blue-500 hover:border-blue-600">
+        <Link href="/about" className="w-full sm:w-auto">
+          <MinecraftButton className="text-lg sm:text-xl px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto bg-blue-600 border-blue-700 hover:bg-blue-500 hover:border-blue-600">
             Learn More
           </MinecraftButton>
         </Link>

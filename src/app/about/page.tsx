@@ -3,7 +3,7 @@ import MinecraftButton from '../../components/MinecraftButton';
 export default function About() {
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-5xl font-bold mb-8 text-center text-yellow-400 shadow-text">
+      <h1 className="text-5xl font-bold mb-8 text-center shadow-text">
         About EasySMP
       </h1>
       <div className="panel max-w-3xl mb-12">

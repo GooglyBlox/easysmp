@@ -1,47 +1,58 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { Home, Info, Users, Award, HelpCircle } from 'lucide-react';
+import MobileNavigation from './MobileNavigation';
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const navItems = [
+  { href: '/', label: 'Home', icon: Home },
+  { href: '/about', label: 'About', icon: Info },
+  { href: '/join', label: 'Join', icon: Users },
+  { href: '/vote', label: 'Vote', icon: Award },
+  { href: '/faq', label: 'FAQ', icon: HelpCircle },
+];
+
+const Navigation: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  if (isMobile) {
+    return <MobileNavigation />;
+  }
 
   return (
-    <nav className="bg-gray-800 bg-opacity-80 backdrop-blur-md">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex-shrink-0 text-white font-bold text-xl">
-            EasySMP
-          </Link>
-          <div className="hidden md:flex items-center justify-end flex-1">
-            <Link href="/" className="nav-link">Home</Link>
-            <Link href="/about" className="nav-link">About</Link>
-            <Link href="/join" className="nav-link">Join</Link>
-            <Link href="/vote" className="nav-link">Vote</Link>
-            <Link href="/faq" className="nav-link">FAQ</Link>
-          </div>
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300 hover:text-white">
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-              </svg>
-            </button>
-          </div>
+    <nav className="fixed top-0 left-0 h-full z-50 flex items-center">
+      <div className="bg-gray-800 h-full w-16 flex flex-col items-center py-4 shadow-lg">
+        <div className="flex flex-col items-center space-y-6">
+          {navItems.map((item) => (
+            <NavLink key={item.href} {...item} isActive={pathname === item.href} />
+          ))}
         </div>
       </div>
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link href="/" className="mobile-nav-link">Home</Link>
-            <Link href="/about" className="mobile-nav-link">About</Link>
-            <Link href="/join" className="mobile-nav-link">Join</Link>
-            <Link href="/vote" className="mobile-nav-link">Vote</Link>
-            <Link href="/faq" className="mobile-nav-link">FAQ</Link>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
+
+const NavLink: React.FC<{ href: string; label: string; icon: React.ElementType; isActive: boolean }> = ({ href, label, icon: Icon, isActive }) => (
+  <Link href={href} className={`group relative p-2 rounded-md transition-colors duration-200 ${isActive ? 'text-green-500' : 'text-white hover:text-green-400'}`}>
+    <Icon className="h-6 w-6" />
+    <span className="absolute left-full ml-2 px-2 py-1 bg-gray-700 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+      {label}
+    </span>
+  </Link>
+);
 
 export default Navigation;

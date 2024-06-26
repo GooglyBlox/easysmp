@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import MinecraftButton from '../../components/MinecraftButton';
 
 const faqs = [
   {
@@ -30,7 +31,7 @@ export default function FAQ() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-5xl font-bold mb-8 text-center text-yellow-400 shadow-text">
+      <h1 className="text-5xl font-bold mb-8 text-center shadow-text">
         Frequently Asked Questions
       </h1>
       <div className="panel max-w-3xl mb-12 w-full">
@@ -53,6 +54,9 @@ export default function FAQ() {
           </div>
         ))}
       </div>
+      <MinecraftButton isDiscordButton className="text-xl px-8 py-3">
+        Join Our Discord
+      </MinecraftButton>
     </div>
   );
 }

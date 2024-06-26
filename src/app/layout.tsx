@@ -6,6 +6,7 @@ import Navigation from "../components/Navigation";
 import BackgroundCarousel from "../components/BackgroundCarousel";
 import MapButton from "../components/MapButton";
 import { Toaster } from 'react-hot-toast';
+import PageTransition from "../components/PageTransition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +26,11 @@ export default function RootLayout({
         <Toaster position="bottom-center" />
         <BackgroundCarousel />
         <Navigation />
-        <main className="flex-grow container mx-auto px-4 py-8">
-          {children}
-        </main>
+        <PageTransition>
+          <main className="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-16 ml-16">
+            {children}
+          </main>
+        </PageTransition>
         <MapButton />
       </body>
     </html>

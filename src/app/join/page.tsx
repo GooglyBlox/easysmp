@@ -1,12 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MinecraftButton from '../../components/MinecraftButton';
 import { toast, Toaster } from 'react-hot-toast';
 
 export default function Join() {
   const [copied, setCopied] = useState(false);
   const serverAddress = "play.ezsmp.live";
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+    };
+  }, []);
 
   const copyToClipboard = async () => {
     try {
@@ -29,7 +39,7 @@ export default function Join() {
   return (
     <div className="flex flex-col items-center">
       <Toaster position="bottom-center" />
-      <h1 className="text-5xl font-bold mb-8 text-center text-yellow-400 shadow-text">
+      <h1 className="text-5xl font-bold mb-8 text-center shadow-text">
         Join EasySMP
       </h1>
       <div className="panel max-w-3xl mb-12">
@@ -61,7 +71,7 @@ export default function Join() {
         </p>
         <div className="flex justify-center">
           <MinecraftButton isDiscordButton className="text-xl px-8 py-3">
-            Join Discord
+            Join Our Discord
           </MinecraftButton>
         </div>
       </div>
