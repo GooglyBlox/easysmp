@@ -8,16 +8,6 @@ export default function Join() {
   const [copied, setCopied] = useState(false);
   const serverAddress = "play.ezsmp.live";
 
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    document.body.style.height = '100vh';
-
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.height = '';
-    };
-  }, []);
-
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(serverAddress);

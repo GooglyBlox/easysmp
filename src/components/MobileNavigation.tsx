@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Info, Users, Award, Server } from 'lucide-react';
@@ -19,6 +17,7 @@ const MobileNavigation: React.FC = () => {
   const [statusData, setStatusData] = useState<ServerStatusData | null>(null);
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
+  const statusRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -42,18 +41,35 @@ const MobileNavigation: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const toggleStatus = () => setIsStatusOpen(!isStatusOpen);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (statusRef.current && !statusRef.current.contains(event.target as Node)) {
+        setIsStatusOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleStatus = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsStatusOpen(!isStatusOpen);
+  };
 
   return (
     <>
       <AnimatePresence>
         {isStatusOpen && (
           <motion.div
+            ref={statusRef}
             initial={{ y: "100%" }}
-            animate={{ y: "4rem" }}  // Show up to just behind the nav bar
+            animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-0 left-0 right-0 bg-gray-900 rounded-t-lg shadow-lg z-40"
+            className="fixed inset-x-0 bottom-16 bg-gray-900 rounded-t-lg shadow-lg z-40"
             style={{ maxHeight: 'calc(100vh - 4rem)', overflowY: 'auto' }}
           >
             <div className="p-4 space-y-4">
@@ -68,13 +84,18 @@ const MobileNavigation: React.FC = () => {
                     <StatusItem label="MOTD" value={statusData.motd.clean} color="text-white" />
                   </div>
                   {statusData.players.list.length > 0 && (
-                    <div>
+                    <div className="mt-4">
                       <h4 className="text-lg font-semibold mb-2 text-green-400">Online Players:</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="grid grid-cols-2 gap-2">
                         {statusData.players.list.map((player) => (
-                          <span key={player.uuid} className="bg-gray-800 px-2 py-1 rounded text-sm text-white">
-                            {player.name_clean}
-                          </span>
+                          <div key={player.uuid} className="bg-gray-800 px-3 py-2 rounded-md text-sm text-white flex items-center space-x-2">
+                            <img
+                              src={`https://mc-heads.net/avatar/${player.name_clean}/32`}
+                              alt={`${player.name_clean}'s head`}
+                              className="w-6 h-6 rounded-sm"
+                            />
+                            <span>{player.name_clean}</span>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -90,7 +111,12 @@ const MobileNavigation: React.FC = () => {
       <nav className="fixed bottom-0 left-0 right-0 bg-gray-800 z-50">
         <div className="flex justify-around items-center h-16">
           {navItems.map((item) => (
-            <NavItem key={item.href} {...item} isActive={pathname === item.href} />
+            <NavItem 
+              key={item.href} 
+              {...item} 
+              isActive={pathname === item.href}
+              onClick={() => setIsStatusOpen(false)}
+            />
           ))}
           <button
             onClick={toggleStatus}
@@ -106,8 +132,18 @@ const MobileNavigation: React.FC = () => {
   );
 };
 
-const NavItem: React.FC<{ href: string; label: string; icon: React.ElementType; isActive: boolean }> = ({ href, label, icon: Icon, isActive }) => (
-  <Link href={href} className={`text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 ${isActive ? 'text-green-500' : ''}`}>
+const NavItem: React.FC<{ 
+  href: string; 
+  label: string; 
+  icon: React.ElementType; 
+  isActive: boolean;
+  onClick: () => void;
+}> = ({ href, label, icon: Icon, isActive, onClick }) => (
+  <Link 
+    href={href} 
+    className={`text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 ${isActive ? 'text-green-500' : ''}`}
+    onClick={onClick}
+  >
     <Icon className="h-6 w-6" />
   </Link>
 );
